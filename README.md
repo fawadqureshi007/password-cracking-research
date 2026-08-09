@@ -1,683 +1,894 @@
-# Password Cracking & Credential Recovery Research
+# 🔐 Password Cracking Research
 
-A practical red-team research repository covering password cracking, credential recovery, encrypted-file attacks, authentication testing, and password security analysis.
+<p align="center">
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=28&duration=2800&pause=900&color=00FF88&center=true&vCenter=true&width=850&lines=PASSWORD+SECURITY+RESEARCH;HASH+RECOVERY+%7C+AUTHENTICATION+AUDITING;OFFLINE+%26+NETWORK+SECURITY+RESEARCH;LEARN+%E2%80%A2+TEST+%E2%80%A2+ANALYZE+%E2%80%A2+DEFEND" alt="Typing Animation">
+</p>
 
-The focus is on understanding how different password protection mechanisms can be assessed using tools such as **John the Ripper, Hashcat, Medusa, and Hydra** in controlled environments.
+<p align="center">
+  <b>A practical cybersecurity research repository focused on password security, hash recovery, authentication auditing, and controlled security testing.</b>
+</p>
 
----
-
-## Scope
-
-This repository covers research and practical labs involving:
-
-### Password Hashes
-
-* MD5
-* SHA family
-* NTLM
-* bcrypt
-* scrypt
-* PBKDF2
-* Other supported password-hash formats
-
-### Encrypted Files & Documents
-
-* PDF password cracking
-* ZIP password cracking
-* RAR password cracking
-* 7-Zip password cracking
-* Microsoft Office password recovery
-* SSH private-key password recovery
-* KeePass database password recovery
-* Other supported encrypted formats
-
-### Authentication Testing
-
-* Online password guessing
-* Brute-force authentication testing
-* Password spraying
-* Credential validation
-* Rate-limit testing
-* Account-lockout testing
-
-Online authentication techniques are covered only in controlled labs and authorized assessments.
+<p align="center">
+  <img src="https://img.shields.io/badge/Focus-Password%20Security-111827?style=for-the-badge">
+  <img src="https://img.shields.io/badge/Research-Authorized%20Testing-111827?style=for-the-badge">
+  <img src="https://img.shields.io/badge/Platform-Linux%20%7C%20Windows-111827?style=for-the-badge">
+  <img src="https://img.shields.io/badge/Status-Active-111827?style=for-the-badge">
+</p>
 
 ---
 
-## Tools
+## ⚡ What Is This?
 
-### John the Ripper
+**Password Cracking Research** is a practical reference and laboratory-focused repository for understanding how password-security systems are evaluated.
 
-Research and labs covering:
-
-* Hash identification
-* Dictionary attacks
-* Wordlist attacks
-* Rules
-* Incremental attacks
-* Password recovery
-* Encrypted-file formats
-* Custom formats
-* Performance testing
-
-### Hashcat
-
-Research and labs covering:
-
-* Hash identification
-* Dictionary attacks
-* Rule-based attacks
-* Mask attacks
-* Hybrid attacks
-* Brute-force techniques
-* GPU acceleration
-* Benchmarking
-* Password-pattern research
-
-### Medusa
-
-Used for controlled research into online authentication security.
-
-Topics include:
-
-* Credential testing
-* Authentication services
-* Password guessing
-* Rate limiting
-* Account lockout
-* Authentication defenses
-
-### Hydra
-
-Used in isolated authentication labs to study online credential attacks and defensive controls.
-
----
-
-# Attack Techniques
-
-The repository documents different password-recovery strategies and when they are useful.
-
-## Dictionary Attacks
-
-Testing candidate passwords from a wordlist.
-
-Useful for passwords based on:
-
-* Common passwords
-* Dictionary words
-* Names
-* Dates
-* Known password patterns
-* Organization-specific terms
-
----
-
-## Brute Force
-
-Testing combinations from a defined character space.
-
-The research covers how:
-
-* Password length
-* Character sets
-* Search space
-* Hardware
-* Hash/KDF cost
-
-affect recovery time.
-
----
-
-## Rule-Based Attacks
-
-Applying transformations to dictionary words.
-
-Examples include:
+The project covers both **offline password recovery** and **online authentication-security testing**, while also examining the defensive controls that make these attacks harder to perform.
 
 ```text
-password
-Password
-password1
-Password1
-password!
-P@ssword
-P@ssword1
-```
-
-Research includes rule construction, optimization, and comparison with conventional dictionary attacks.
-
----
-
-## Mask Attacks
-
-Testing passwords when part of their structure is known.
-
-Example:
-
-```text
-Word + 4 digits
-```
-
-Mask attacks are particularly useful when password-pattern information is available during an authorized assessment.
-
----
-
-## Hybrid Attacks
-
-Combining wordlists, masks, and mutations.
-
-Examples:
-
-```text
-Word + Numbers
-Word + Symbol
-Word + Year
-Mask + Word
-Word + Mask
+                     PASSWORD SECURITY RESEARCH
+                               │
+             ┌─────────────────┴─────────────────┐
+             │                                   │
+       OFFLINE RESEARCH                    ONLINE RESEARCH
+             │                                   │
+       ┌─────┴─────┐                     ┌───────┴────────┐
+       │           │                     │                │
+     Hashes     Recovery            Authentication    Services
+       │           │                     │                │
+       ▼           ▼                     ▼                ▼
+   Hashcat      John                  Hydra            Medusa
+   Ophcrack     RainbowCrack          Ncrack           Patator
+   Hashcat      Utilities             Crowbar          Network Tests
+             │
+             ▼
+      WINDOWS / AD RESEARCH
+             │
+             ▼
+        CrackMapExec
 ```
 
 ---
 
-## Password Pattern Research
+# 🎯 Objectives
 
-Research into predictable password construction, including:
+This repository is designed to help researchers understand:
 
-* Names
-* Years
-* Seasons
-* Company names
-* Number sequences
-* Common substitutions
-* Repeated patterns
-* Password mutations
+* How password hashes are analyzed
+* How password candidates are generated
+* How different recovery strategies work
+* How authentication services can be security-tested
+* How rate limiting affects authentication attempts
+* How account lockout policies behave
+* How Windows and Active Directory authentication can be assessed
+* How defensive monitoring detects suspicious authentication activity
+* How to document repeatable security experiments
 
----
-
-# Encrypted File Research
-
-A major part of the repository focuses on recovering passwords from protected files created specifically for laboratory research.
-
-## PDF
-
-Research includes:
-
-* PDF protection mechanisms
-* Password extraction
-* Hash/verification representation
-* Dictionary attacks
-* Rule attacks
-* Mask attacks
-* Recovery analysis
-
-## ZIP
-
-Research includes:
-
-* ZIP encryption
-* Password extraction
-* Dictionary attacks
-* Rule attacks
-* Mask attacks
-* Recovery analysis
-
-## RAR
-
-Research into password-protected RAR archives and their supported recovery workflows.
-
-## 7-Zip
-
-Research into encrypted 7z archives, password verification, attack strategies, and performance.
-
-## Microsoft Office
-
-Research includes password-protected:
-
-* DOCX
-* XLSX
-* PPTX
-
-Different Office versions and protection mechanisms may behave differently and are documented separately.
-
-## SSH Private Keys
-
-Research into encrypted private-key passphrases and authorized password recovery.
-
-## KeePass
-
-Research into password-protected KeePass databases and the security properties of their key-derivation mechanisms.
+The goal is **understanding password security**, not simply running tools.
 
 ---
 
-# Authentication Attacks
-
-Online authentication attacks are fundamentally different from offline password cracking.
-
-This repository covers controlled research involving:
-
-* SSH
-* FTP
-* HTTP authentication
-* Other intentionally vulnerable lab services
-
-Research areas include:
-
-* Credential guessing
-* Password spraying
-* Rate limiting
-* Account lockout
-* Authentication monitoring
-* Detection
-* Defensive controls
-
-No public or unauthorized authentication services are used.
-
----
-
-# Research Methodology
-
-Each technique follows a consistent workflow:
+# 🧠 Core Research Areas
 
 ```text
-Define Scope
-     ↓
-Identify Protection
-     ↓
-Analyze Target
-     ↓
-Select Attack Technique
-     ↓
-Prepare Test Data
-     ↓
-Run Controlled Test
-     ↓
-Measure Results
-     ↓
-Analyze Recovery
-     ↓
-Document Findings
-     ↓
-Evaluate Defenses
+┌──────────────────────────────────────────────────────────────┐
+│                    PASSWORD SECURITY                         │
+├──────────────────────────────────────────────────────────────┤
+│                                                              │
+│  Hash Analysis        Candidate Generation                   │
+│  Password Recovery    Authentication Testing                 │
+│  Wordlists            Mask Techniques                         │
+│  Rules                Brute-Force Research                    │
+│  Rainbow Tables       Windows Security                        │
+│  Active Directory     Detection Engineering                   │
+│                                                              │
+└──────────────────────────────────────────────────────────────┘
 ```
-
-Each case study should document:
-
-* Objective
-* Target type
-* Protection mechanism
-* Tool used
-* Attack technique
-* Configuration
-* Hardware
-* Runtime
-* Result
-* Recovery status
-* Analysis
-* Limitations
-* Defensive recommendations
 
 ---
 
-# Repository Structure
+# 📚 Repository Structure
 
 ```text
 password-cracking-research/
 │
-├── README.md
-├── LICENSE
-├── CONTRIBUTING.md
-├── SECURITY.md
+├── 📁 Foundations/
+│   └── 📄 Cracking-Time.md
 │
-├── 00-foundations/
-│   ├── hashing-vs-encryption.md
-│   ├── online-vs-offline.md
-│   ├── salts.md
-│   ├── kdf.md
-│   ├── password-strength.md
-│   └── cracking-time.md
+├── 📁 Attack Guide/
+│   │
+│   ├── 📄 README.md
+│   │
+│   ├── ⚡ Hashcat.md
+│   ├── 🔨 john-the-ripper.md
+│   ├── 🌐 hydra.md
+│   ├── 🔑 medusa.md
+│   ├── 🛡️ ncrack.md
+│   ├── ⚙️ patator.md
+│   ├── 🔐 crowbar.md
+│   ├── 🧰 hashcat-utils.md
+│   ├── 🪟 ophcrack.md
+│   ├── 🌈 rainbowcrack.md
+│   └── 🖥️ crackmapexec.md
 │
-├── 01-lab-setup/
-│   ├── john.md
-│   ├── hashcat.md
-│   ├── medusa.md
-│   ├── hydra.md
-│   └── wordlists.md
+├── 📁 Attack Techniques/
+│   ├── 📄 README.md
+│   ├── 📄 dictionary-attacks.md
+│   ├── 📄 brute-force-attacks.md
+│   ├── 📄 mask-attacks.md
+│   └── 📄 incremental-attacks.md
 │
-├── 02-john-the-ripper/
-│   ├── fundamentals/
-│   ├── dictionary/
-│   ├── rules/
-│   ├── incremental/
-│   ├── encrypted-files/
-│   └── case-studies/
+├── 📁 Password Recovery/
+│   ├── 📄 office-password-recovery.md
+│   ├── 📄 archive-password-recovery.md
+│   ├── 📄 pdf-password-recovery.md
+│   ├── 📄 database-password-recovery.md
+│   ├── 📄 browser-password-recovery.md
+│   ├── 📄 cloud-password-recovery.md
+│   ├── 📄 ssh-key-recovery.md
+│   └── 📄 password-manager-recovery.md
 │
-├── 03-hashcat/
-│   ├── fundamentals/
-│   ├── dictionary/
-│   ├── rules/
-│   ├── masks/
-│   ├── hybrid/
-│   ├── benchmarking/
-│   └── case-studies/
-│
-├── 04-online-authentication/
-│   ├── medusa/
-│   ├── hydra/
-│   ├── password-spraying/
-│   ├── rate-limiting/
-│   ├── account-lockout/
-│   └── labs/
-│
-├── 05-encrypted-files/
-│   ├── pdf/
-│   ├── zip/
-│   ├── rar/
-│   ├── 7zip/
-│   ├── office/
-│   ├── ssh-keys/
-│   └── keepass/
-│
-├── 06-attack-techniques/
-│   ├── dictionary.md
-│   ├── brute-force.md
-│   ├── rules.md
-│   ├── masks.md
-│   ├── hybrid.md
-│   ├── custom-wordlists.md
-│   └── password-patterns.md
-│
-├── 07-credentials/
-│   ├── linux/
-│   ├── windows/
-│   ├── applications/
-│   └── lab-data/
-│
-├── 08-case-studies/
-│   ├── weak-password/
-│   ├── predictable-password/
-│   ├── password-reuse/
-│   ├── custom-wordlist/
-│   ├── weak-kdf/
-│   └── combined-techniques/
-│
-├── 09-benchmarking/
-│   ├── cpu-vs-gpu.md
-│   ├── hashcat/
-│   ├── john/
-│   └── comparisons/
-│
-├── 10-defense/
-│   ├── password-storage.md
-│   ├── password-policy.md
-│   ├── kdf.md
-│   ├── mfa.md
-│   ├── rate-limiting.md
-│   ├── account-lockout.md
-│   └── detection.md
-│
-├── 11-labs/
-│   ├── basic-hash/
-│   ├── dictionary/
-│   ├── rules/
-│   ├── masks/
-│   ├── pdf/
-│   ├── zip/
-│   ├── ssh/
-│   └── full-assessment/
-│
-├── scripts/
-│   ├── hash-identification/
-│   ├── wordlist-generation/
-│   ├── extraction/
-│   └── benchmarking/
-│
-├── wordlists/
-│   └── lab/
-│
-└── docs/
-    ├── methodology.md
-    ├── terminology.md
-    ├── troubleshooting.md
-    └── references.md
+├── 📄 README.md
+├── 📄 LICENSE
+└── 📄 .gitignore
 ```
 
 ---
 
-# Lab Environment
+# 🛠️ Tool Collection
 
-All practical research should be performed using:
+## ⚡ Hashcat
 
-* Self-generated hashes
-* Self-created encrypted files
-* Intentionally vulnerable machines
+GPU-accelerated password-recovery and hash-analysis framework.
+
+```text
+Hash Modes
+Wordlists
+Mask Attacks
+Rules
+Charsets
+Benchmarking
+Candidate Generation
+Recovery Workflows
+```
+
+→ [`Attack Guide/Hashcat.md`](Attack%20Guide/Hashcat.md)
+
+---
+
+## 🔨 John the Ripper
+
+A powerful password-security auditing and offline hash-recovery framework.
+
+```text
+Hash Identification
+Wordlists
+Rules
+Incremental Modes
+Custom Candidates
+Session Management
+Recovery
+```
+
+→ [`Attack Guide/john-the-ripper.md`](Attack%20Guide/john-the-ripper.md)
+
+---
+
+## 🌐 Hydra
+
+Parallelized network authentication-security testing framework.
+
+```text
+SSH
+FTP
+HTTP
+HTTPS
+SMTP
+IMAP
+POP3
+Database Services
+RDP
+SMB
+```
+
+→ [`Attack Guide/hydra.md`](Attack%20Guide/hydra.md)
+
+---
+
+## 🔑 Medusa
+
+Parallel network-login auditing framework designed for controlled authentication testing.
+
+```text
+Authentication Modules
+Credential Auditing
+Network Services
+Laboratory Testing
+Logging
+Rate-Limit Research
+```
+
+→ [`Attack Guide/medusa.md`](Attack%20Guide/medusa.md)
+
+---
+
+## 🛡️ Ncrack
+
+Network authentication auditing tool for controlled security assessments.
+
+```text
+Network Services
+Authentication Testing
+Credential Auditing
+Service Analysis
+Laboratory Research
+```
+
+→ [`Attack Guide/ncrack.md`](Attack%20Guide/ncrack.md)
+
+---
+
+## ⚙️ Patator
+
+Modular framework for authentication and protocol testing.
+
+```text
+Module Architecture
+Request Testing
+Credential Validation
+Protocol Research
+Laboratory Automation
+```
+
+→ [`Attack Guide/patator.md`](Attack%20Guide/patator.md)
+
+---
+
+## 🔐 Crowbar
+
+Credential-testing tool supporting selected remote authentication technologies.
+
+```text
+RDP
+SSH Keys
+OpenVPN
+Credential Auditing
+Controlled Authentication Testing
+```
+
+→ [`Attack Guide/crowbar.md`](Attack%20Guide/crowbar.md)
+
+---
+
+## 🧰 Hashcat Utils
+
+Utilities for preparing and processing password candidates.
+
+```text
+Candidate Generation
+Wordlist Processing
+Charset Operations
+Password Data Transformation
+Hashcat Workflows
+```
+
+→ [`Attack Guide/hashcat-utils.md`](Attack%20Guide/hashcat-utils.md)
+
+---
+
+## 🪟 Ophcrack
+
+Windows password-recovery research tool using rainbow-table techniques.
+
+```text
+NTLM Research
+Rainbow Tables
+Windows Password Auditing
+Offline Recovery
+```
+
+→ [`Attack Guide/ophcrack.md`](Attack%20Guide/ophcrack.md)
+
+---
+
+## 🌈 RainbowCrack
+
+Rainbow-table-based password-recovery research.
+
+```text
+Table Generation
+Hash Generation
+Table Lookup
+Password Recovery
+```
+
+→ [`Attack Guide/rainbowcrack.md`](Attack%20Guide/rainbowcrack.md)
+
+---
+
+## 🖥️ CrackMapExec
+
+Windows and Active Directory security-assessment framework.
+
+```text
+SMB
+WinRM
+LDAP
+MSSQL
+RDP
+Windows Hosts
+Active Directory
+Credential Validation
+Security Configuration
+```
+
+> CrackMapExec is primarily a Windows/Active Directory assessment tool rather than a standalone password-cracking utility.
+
+→ [`Attack Guide/crackmapexec.md`](Attack%20Guide/crackmapexec.md)
+
+---
+
+# 🧪 Attack Techniques
+
+The repository also documents the underlying concepts behind password-recovery techniques.
+
+| Technique      | Purpose                                      |
+| -------------- | -------------------------------------------- |
+| Dictionary     | Test candidates from known wordlists         |
+| Brute Force    | Explore a defined candidate space            |
+| Mask           | Generate candidates matching a known pattern |
+| Incremental    | Progressively explore candidate combinations |
+| Rule-Based     | Transform existing password candidates       |
+| Rainbow Tables | Precomputed hash-recovery research           |
+
+Explore:
+
+→ [`Attack Techniques/`](Attack%20Techniques/)
+
+---
+
+# 🔐 Password Recovery Research
+
+The repository includes research covering different password-protected formats and credential stores.
+
+```text
+Office Documents
+        │
+        ├── Word
+        ├── Excel
+        └── PowerPoint
+
+Archives
+        │
+        ├── ZIP
+        ├── 7z
+        └── RAR
+
+Documents
+        │
+        └── PDF
+
+Credential Stores
+        │
+        ├── Databases
+        ├── Browsers
+        ├── Password Managers
+        └── SSH Keys
+```
+
+Explore:
+
+→ [`Password Recovery/`](Password%20Recovery/)
+
+---
+
+# ⏱️ Understanding Cracking Time
+
+Password recovery is not simply about running a faster tool.
+
+Recovery time depends on:
+
+```text
+Candidate Space
+      ×
+Hash Algorithm
+      ×
+Hardware
+      ×
+Candidate Generation
+      ×
+Implementation
+      ×
+Password Structure
+```
+
+Research should therefore measure:
+
+```text
+Hash Type
+Candidate Count
+Candidate Rate
+Hardware
+Attack Strategy
+Elapsed Time
+Recovery Result
+```
+
+See:
+
+→ [`Foundations/`](Foundations/)
+
+---
+
+# 🧭 Recommended Learning Path
+
+### Level 01 — Foundations
+
+```text
+Password Entropy
+      ↓
+Hashing
+      ↓
+Salting
+      ↓
+Hash Identification
+      ↓
+Cracking-Time Models
+```
+
+### Level 02 — Offline Recovery
+
+```text
+Hashcat
+      ↓
+John the Ripper
+      ↓
+Wordlists
+      ↓
+Rules
+      ↓
+Masks
+      ↓
+Incremental Research
+```
+
+### Level 03 — Authentication Testing
+
+```text
+Hydra
+      ↓
+Medusa
+      ↓
+Ncrack
+      ↓
+Patator
+      ↓
+Crowbar
+```
+
+### Level 04 — Specialized Recovery
+
+```text
+Ophcrack
+      ↓
+RainbowCrack
+      ↓
+Hashcat Utils
+```
+
+### Level 05 — Windows / Active Directory
+
+```text
+SMB
+ ↓
+Windows Authentication
+ ↓
+WinRM
+ ↓
+LDAP
+ ↓
+Active Directory
+ ↓
+Security Assessment
+```
+
+---
+
+# 🔬 Research Methodology
+
+Every experiment should follow a repeatable process:
+
+```text
+┌─────────────────────┐
+│ DEFINE OBJECTIVE    │
+└──────────┬──────────┘
+           ↓
+┌─────────────────────┐
+│ DEFINE AUTHORIZED   │
+│ SCOPE               │
+└──────────┬──────────┘
+           ↓
+┌─────────────────────┐
+│ BUILD LAB           │
+└──────────┬──────────┘
+           ↓
+┌─────────────────────┐
+│ CREATE TEST DATA    │
+└──────────┬──────────┘
+           ↓
+┌─────────────────────┐
+│ SELECT TECHNIQUE    │
+└──────────┬──────────┘
+           ↓
+┌─────────────────────┐
+│ RUN CONTROLLED TEST │
+└──────────┬──────────┘
+           ↓
+┌─────────────────────┐
+│ MONITOR LOGS        │
+└──────────┬──────────┘
+           ↓
+┌─────────────────────┐
+│ ANALYZE RESULTS     │
+└──────────┬──────────┘
+           ↓
+┌─────────────────────┐
+│ DOCUMENT FINDINGS   │
+└──────────┬──────────┘
+           ↓
+┌─────────────────────┐
+│ REMEDIATE + RETEST  │
+└─────────────────────┘
+```
+
+---
+
+# 🧰 Recommended Laboratory
+
+A practical isolated environment can look like:
+
+```text
+                         ┌─────────────────┐
+                         │   TEST NETWORK  │
+                         └────────┬────────┘
+                                  │
+              ┌───────────────────┼───────────────────┐
+              │                   │                   │
+              ▼                   ▼                   ▼
+        ┌───────────┐       ┌───────────┐       ┌───────────┐
+        │   Kali    │       │ Windows   │       │    AD     │
+        │  /Parrot  │       │    VM     │       │   Lab     │
+        └───────────┘       └───────────┘       └───────────┘
+              │                   │                   │
+              └───────────────────┴───────────────────┘
+                                  │
+                           Controlled Testing
+```
+
+Recommended components:
+
+```text
+Linux Security VM
+Windows Test VM
+Windows Server
+Active Directory Domain
+Dedicated Test Accounts
+Test Password Dataset
+Isolated Network
+Centralized Logging
+```
+
+---
+
+# 📊 What To Measure
+
+For serious research, record more than simply whether a password was recovered.
+
+```text
+┌─────────────────────────────┐
+│ Experiment                  │
+├─────────────────────────────┤
+│ Tool                        │
+│ Version                     │
+│ Hash / Protocol             │
+│ Hardware                    │
+│ Candidate Dataset           │
+│ Candidate Count             │
+│ Candidate Rate              │
+│ Threads / Workload          │
+│ Start Time                  │
+│ End Time                    │
+│ Recovery Result             │
+│ Detection Result            │
+└─────────────────────────────┘
+```
+
+This makes experiments reproducible.
+
+---
+
+# 🛡️ Defensive Research
+
+Password-security research should also evaluate defenses.
+
+Important areas include:
+
+```text
+Strong Password Policies
+Password Managers
+Unique Credentials
+MFA
+Account Lockout
+Rate Limiting
+Secure Hashing
+Salting
+Key Stretching
+Credential Monitoring
+Authentication Logging
+SIEM Detection
+Least Privilege
+```
+
+A useful defensive experiment:
+
+```text
+Test Authentication
+        ↓
+Generate Authentication Events
+        ↓
+Collect Logs
+        ↓
+Detect Pattern
+        ↓
+Generate Alert
+        ↓
+Investigate
+        ↓
+Remediate
+        ↓
+Retest
+```
+
+---
+
+# 🚨 Security Considerations
+
+Password and authentication-testing tools can generate:
+
+```text
+Account Lockouts
+Authentication Alerts
+Service Load
+Network Traffic
+Security Events
+Potential Data Exposure
+```
+
+Always begin with a small controlled test.
+
+Never assume that a tool is harmless simply because it is publicly available.
+
+---
+
+# ⚖️ Responsible Use
+
+This repository is intended for:
+
+* Cybersecurity education
+* Authorized penetration testing
+* Personal laboratories
 * CTF environments
-* Authorized penetration-testing targets
-* Synthetic credentials
+* Password-security research
+* Defensive security research
+* Security-tool experimentation
 
-A typical lab can consist of:
+Do **not** use the material against systems, accounts, or networks without explicit authorization.
+
+Never test:
 
 ```text
-Kali Linux
-    │
-    ├── John the Ripper
-    ├── Hashcat
-    ├── Medusa
-    └── Hydra
-          │
-          ▼
-   Isolated Test Network
-          │
-     ┌────┴────┐
-     ▼         ▼
-  Linux Lab  Windows Lab
+Third-Party Accounts
+Public Login Portals
+Production Systems Outside Scope
+Stolen Credentials
+Unauthorized Networks
 ```
 
 ---
 
-# Performance Research
+# 🧹 Credential Hygiene
 
-Password recovery performance depends on the algorithm, attack technique, candidate space, and hardware.
+Never commit sensitive information to this repository.
 
-Benchmarks may compare:
-
-```text
-CPU vs GPU
-John vs Hashcat
-Dictionary vs Rules
-Rules vs Masks
-Fast Hash vs Slow KDF
-```
-
-Measurements can include:
-
-* Candidates per second
-* Runtime
-* Hardware utilization
-* Memory requirements
-* Candidate count
-* Recovery status
-
-All benchmark results should include enough information to reproduce the experiment.
-
----
-
-# Case Studies
-
-The repository will contain complete controlled scenarios such as:
-
-### Weak Password
-
-Demonstrate how a weak password can be recovered using a suitable wordlist.
-
-### Predictable Password
-
-Study passwords constructed from predictable patterns such as:
+Do not upload:
 
 ```text
-Word + Year
-Name + Number
-Company + Year
-Word + Symbol
+Real Passwords
+Password Hashes
+Private Keys
+API Keys
+Session Tokens
+Cookies
+Production Credentials
+Personal Data
+Internal Host Information
 ```
 
-### Password Reuse
-
-Demonstrate the security impact of reusing credentials across controlled lab systems.
-
-### Custom Wordlist
-
-Compare a generic wordlist against a context-specific laboratory wordlist.
-
-### Weak KDF
-
-Measure how an unsuitable password-derivation configuration affects offline recovery.
-
-### Combined Techniques
-
-Compare multiple attack strategies against the same synthetic target.
+Use synthetic laboratory data instead.
 
 ---
 
-# Defensive Research
+# 📝 Reporting Template
 
-Every offensive technique should have a corresponding defensive section.
+A useful security finding should contain:
 
-Research includes:
+```text
+Title
+Severity
+Affected System
+Affected Account
+Description
+Technical Evidence
+Security Impact
+Root Cause
+Recommendation
+Retest Result
+```
 
-* Secure password storage
-* Strong password policies
-* Password managers
-* MFA
-* Salting
-* Argon2id
-* bcrypt
-* scrypt
-* PBKDF2
-* Appropriate work factors
-* Rate limiting
-* Account lockout
-* Authentication monitoring
-* Credential-reuse detection
+Example:
 
-The objective is to understand both **how credentials can be recovered and how organizations can make recovery significantly harder**.
+```text
+Finding:
+Weak Authentication Controls
 
----
+Impact:
+Repeated authentication attempts were not sufficiently
+rate-limited in the laboratory environment.
 
-# Data Handling
-
-Do not commit the following to this repository:
-
-* Real passwords
-* Stolen password databases
-* Real user credentials
-* Private keys belonging to others
-* Session tokens
-* API keys
-* Corporate credential dumps
-* Personal information
-* Unauthorized access data
-
-Use synthetic or intentionally created laboratory data instead.
+Recommendation:
+Implement rate limiting, account lockout controls,
+monitoring, and MFA where appropriate.
+```
 
 ---
 
-# Roadmap
+# 🚀 Project Philosophy
 
-### Foundations
+```text
+Learn
+  ↓
+Understand
+  ↓
+Experiment
+  ↓
+Measure
+  ↓
+Analyze
+  ↓
+Defend
+  ↓
+Improve
+```
 
-* [ ] Hashing vs encryption
-* [ ] Online vs offline attacks
-* [ ] Salts
-* [ ] KDFs
-* [ ] Password entropy
-* [ ] Recovery-time estimation
+The objective is not simply to recover a password.
 
-### John the Ripper
-
-* [ ] Installation
-* [ ] Hash identification
-* [ ] Dictionary attacks
-* [ ] Rules
-* [ ] Incremental attacks
-* [ ] Encrypted files
-* [ ] Case studies
-
-### Hashcat
-
-* [ ] Installation
-* [ ] Hash identification
-* [ ] Dictionary attacks
-* [ ] Rules
-* [ ] Masks
-* [ ] Hybrid attacks
-* [ ] Benchmarking
-* [ ] Case studies
-
-### Encrypted Files
-
-* [ ] PDF
-* [ ] ZIP
-* [ ] RAR
-* [ ] 7z
-* [ ] DOCX
-* [ ] XLSX
-* [ ] PPTX
-* [ ] SSH keys
-* [ ] KeePass
-
-### Authentication
-
-* [ ] Medusa
-* [ ] Hydra
-* [ ] Password spraying
-* [ ] Rate-limit testing
-* [ ] Account-lockout testing
-* [ ] Detection research
-
-### Advanced Research
-
-* [ ] Custom wordlists
-* [ ] Password mutation
-* [ ] Pattern analysis
-* [ ] Hybrid techniques
-* [ ] Combined attacks
-* [ ] Performance comparisons
-
-### Defense
-
-* [ ] Password storage
-* [ ] KDF configuration
-* [ ] MFA
-* [ ] Rate limiting
-* [ ] Account lockout
-* [ ] Monitoring
-* [ ] Detection
+The objective is to understand **why the password was recoverable, what made it difficult or easy, how the system responded, and how the security posture can be improved.**
 
 ---
 
-# References
+# 📂 Quick Navigation
 
-Primary documentation and established security references should be preferred:
-
-* Hashcat documentation
-* John the Ripper documentation
-* Medusa documentation
-* Hydra documentation
-* OWASP Authentication Cheat Sheet
-* OWASP Password Storage Cheat Sheet
-* NIST Digital Identity Guidelines
-* Cryptographic standards
-* Academic password-security research
+| Section                                      | Description                        |
+| -------------------------------------------- | ---------------------------------- |
+| [`Foundations/`](Foundations/)               | Core password-security concepts    |
+| [`Attack Guide/`](Attack%20Guide/)           | Practical security-tool references |
+| [`Attack Techniques/`](Attack%20Techniques/) | Password attack methodology        |
+| [`Password Recovery/`](Password%20Recovery/) | Format-specific recovery research  |
 
 ---
 
-# Disclaimer
+# ⭐ Repository Focus
 
-This repository is intended for **authorized security research, education, CTFs, penetration testing, and isolated laboratory environments**.
-
-Do not use the techniques documented here against systems, accounts, files, or credentials without authorization.
-
-The purpose of the project is to understand password security from a red-team perspective and use that knowledge to improve security.
+```text
+                ┌───────────────────────┐
+                │ PASSWORD SECURITY     │
+                └───────────┬───────────┘
+                            │
+        ┌───────────────────┼───────────────────┐
+        │                   │                   │
+        ▼                   ▼                   ▼
+     OFFLINE             ONLINE             WINDOWS
+     RECOVERY           TESTING                / AD
+        │                   │                   │
+        ▼                   ▼                   ▼
+     HASHES           AUTHENTICATION         SMB
+     WORDLISTS        SERVICES               LDAP
+     MASKS            PROTOCOLS              WINRM
+     RULES            RATE LIMITS             RDP
+     TABLES           LOCKOUTS               MSSQL
+        │                   │                   │
+        └───────────────────┼───────────────────┘
+                            ▼
+                     SECURITY RESEARCH
+                            │
+                            ▼
+                      DEFENSIVE IMPROVEMENT
+```
 
 ---
 
-## Research. Test. Understand. Secure.
+# 📈 Project Status
+
+```text
+Foundations              ████████████████████  Complete
+Attack Guide             ████████████████████  Complete
+Attack Techniques        ████████████████████  Complete
+Password Recovery        ████████████████████  Complete
+Documentation            ████████████████████  Active
+Research                 ███████████████████░  Ongoing
+```
+
+---
+
+# 🤝 Contributing
+
+Contributions are welcome when they improve the educational and research value of the project.
+
+Useful contributions include:
+
+```text
+New Security Research
+Improved Documentation
+Lab Methodologies
+Detection Techniques
+Defensive Analysis
+Tool Corrections
+Reproducible Experiments
+```
+
+Please avoid submitting:
+
+```text
+Real Credentials
+Unauthorized Targets
+Stolen Data
+Sensitive Information
+Malicious Infrastructure
+```
+
+---
+
+# 📜 License
+
+See [`LICENSE`](LICENSE) for the repository license.
+
+---
+
+# ⚠️ Disclaimer
+
+This repository is provided for **educational, research, and authorized security-testing purposes**.
+
+The author does not encourage unauthorized access, credential theft, account compromise, or attacks against systems without permission.
+
+You are responsible for ensuring that your use of these tools and techniques complies with applicable laws, policies, and authorization requirements.
+
+---
+
+<p align="center">
+
+<b>🔐 PASSWORD SECURITY RESEARCH</b>
+
+<br>
+
+<code>LEARN • TEST • ANALYZE • DEFEND</code>
+
+<br><br>
+
+<i>Build knowledge. Understand the attack. Improve the defense.</i>
+
+</p>
+---
+
+<p align="center">
+  <b>© 2026 Fawad Qureshi</b><br>
+  Security Researcher • <a href="https://instagram.com/h4cker_fawad">@h4cker_fawad</a><br>
+  All rights reserved.
+</p>
