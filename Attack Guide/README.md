@@ -1,393 +1,496 @@
-# Lab Setup
+# Attack Guide
 
-This section covers the environment used for controlled password-security research.
-
-The objective is to build an isolated lab where password hashing, password recovery, authentication testing, and encrypted-file recovery can be tested without affecting real systems or accounts.
-
-## Lab Objectives
-
-The lab should provide:
-
-* An isolated testing environment
-* Linux-based security tools
-* Synthetic password hashes
-* Self-created encrypted files
-* Test authentication services
-* Repeatable experiments
-* A consistent environment for benchmarking
-
-All testing should be performed against systems and data that you own or have explicit authorization to assess.
+> Practical reference for password-security research, authentication auditing, credential-security testing, and authorized security assessments.
 
 ---
 
-## Recommended Environment
+## Overview
 
-A practical setup can use:
+This directory contains practical guides for tools used in:
 
 ```text
-Host Machine
-     │
-     ├── Virtual Machine
-     │      └── Kali Linux / Other Linux Distribution
-     │
-     ├── Test Machine
-     │      └── Linux / Windows
-     │
-     └── Test Files
-            ├── Hashes
-            ├── PDF
-            ├── ZIP
-            ├── RAR
-            ├── 7z
-            └── Office Files
+Password Security Research
+Authentication Testing
+Credential Auditing
+Hash Recovery
+Windows Security Assessment
+Active Directory Security Testing
+Network Authentication Testing
 ```
 
-A virtualized environment makes it easier to create snapshots, reset experiments, and keep research data isolated.
+All techniques should be performed only in environments where you have explicit authorization.
 
 ---
 
-# Operating System
+# Tool Collection
 
-Kali Linux is convenient for this type of research because many security-testing utilities are already available or can be installed through its package system.
+## Password & Hash Analysis
 
-Other Linux distributions can also be used.
+### Hashcat
 
-The important requirement is not the distribution itself but having a reproducible environment with the required tools and dependencies.
+[`Hashcat.md`](Hashcat.md)
 
----
+GPU-accelerated password-recovery and hash-analysis tool.
 
-# Core Tools
-
-The research environment will focus on several categories of tools.
-
-## John the Ripper
-
-Used primarily for offline password-recovery research.
+Topics include:
 
 ```text
-John the Ripper
-├── Password hashes
-├── Dictionary attacks
-├── Rules
-├── Incremental attacks
-└── Supported encrypted formats
+Hash identification
+Hash modes
+Wordlists
+Mask-based candidates
+Rule-based processing
+Benchmarking
+Recovery workflows
 ```
-
-See:
-
-`../John-the-Ripper/`
 
 ---
 
-## Hashcat
+### John the Ripper
 
-Hashcat is used for high-performance password-recovery research and supports a large number of hash and password-protection formats.
+[`john-the-ripper.md`](john-the-ripper.md)
+
+Password-security auditing and offline hash-recovery framework.
+
+Topics include:
 
 ```text
-Hashcat
-├── Dictionary
-├── Rules
-├── Masks
-├── Hybrid attacks
-└── Benchmarking
+Hash formats
+Wordlists
+Rules
+Incremental modes
+Custom candidates
+Session management
+Result analysis
 ```
 
-See:
+---
 
-`../Hashcat/`
+### Hashcat Utils
+
+[`hashcat-utils.md`](hashcat-utils.md)
+
+Utilities for preparing and processing password candidates for authorized research.
+
+Topics include:
+
+```text
+Candidate generation
+Wordlist processing
+Charset preparation
+Password-data transformation
+Hashcat workflow support
+```
+
+---
+
+### Ophcrack
+
+[`ophcrack.md`](ophcrack.md)
+
+Windows password-recovery research tool based on rainbow-table techniques.
+
+Topics include:
+
+```text
+Windows password auditing
+Rainbow tables
+NTLM research
+Laboratory recovery
+Result interpretation
+```
+
+---
+
+### RainbowCrack
+
+[`rainbowcrack.md`](rainbowcrack.md)
+
+Rainbow-table based password-recovery research.
+
+Topics include:
+
+```text
+Rainbow tables
+Hash generation
+Table creation
+Table lookup
+Password-recovery research
+```
+
+---
+
+# Authentication Testing
+
+## Hydra
+
+[`hydra.md`](hydra.md)
+
+Parallelized network authentication-security testing tool.
+
+Common laboratory protocols include:
+
+```text
+SSH
+FTP
+Telnet
+SMTP
+IMAP
+POP3
+MySQL
+PostgreSQL
+SMB
+RDP
+HTTP
+HTTPS
+```
+
+The guide focuses on:
+
+```text
+Authentication testing
+Module usage
+Laboratory services
+Rate-limit research
+Account-lockout testing
+Authentication logging
+Detection research
+```
 
 ---
 
 ## Medusa
 
-Medusa is intended for controlled online authentication testing against supported network services.
+[`medusa.md`](medusa.md)
 
-It should only be used against explicitly authorized targets.
+Parallel network-login auditing tool for authorized authentication testing.
 
-See:
-
-`../Online-Authentication/`
-
----
-
-## Hydra
-
-Hydra is another tool used for authorized online authentication testing.
-
-Its use in this repository is limited to isolated laboratory environments and approved penetration-testing scenarios.
-
----
-
-# Wordlists
-
-Wordlists are collections of candidate passwords or words used during password-recovery testing.
-
-The repository will distinguish between:
+Topics include:
 
 ```text
-Wordlists
-├── Public wordlists
-├── Synthetic lab wordlists
-├── Custom research lists
-└── Generated candidates
-```
-
-Do not commit credentials obtained from real users or unauthorized systems.
-
-See:
-
-`../Wordlists/`
-
----
-
-# Creating Test Passwords
-
-Use synthetic passwords for experiments.
-
-Example categories:
-
-```text
-Weak
-Predictable
-Dictionary-based
-Pattern-based
-Random
-Long passphrase
-Random high-entropy password
-```
-
-The purpose is to test different password-generation characteristics rather than recover real credentials.
-
-A research dataset can record:
-
-```text
-Password Type
-Length
-Character Set
-Pattern
-Generation Method
-Expected Difficulty
-```
-
-The actual passwords do not need to be published when the experiment can be reproduced using a generator.
-
----
-
-# Generating Hashes
-
-For controlled experiments, create the password hashes yourself.
-
-A basic workflow is:
-
-```text
-Synthetic Password
-       ↓
-Selected Hash / KDF
-       ↓
-Generated Hash
-       ↓
-Password-Recovery Test
-       ↓
-Record Result
-```
-
-Record the algorithm and relevant parameters for every experiment.
-
-Example:
-
-```text
-Algorithm:       [document]
-Salt:            [document]
-Cost Parameters: [document]
-Password Type:   [document]
+Module usage
+Credential auditing
+Network services
+Laboratory authentication
+Logging
+Rate limiting
 ```
 
 ---
 
-# Encrypted-File Lab
+## Ncrack
 
-Encrypted-file research should use files created specifically for the laboratory.
+[`ncrack.md`](ncrack.md)
 
-Example structure:
+Network authentication auditing tool designed for controlled security assessments.
+
+Topics include:
 
 ```text
-Test Files
-├── sample.pdf
-├── sample.zip
-├── sample.rar
-├── sample.7z
-├── sample.docx
-├── sample.xlsx
-└── sample.pptx
+Supported services
+Authentication testing
+Service configuration
+Laboratory testing
+Credential-security assessment
 ```
-
-Each file should have a known test password and documented protection settings.
-
-This makes recovery experiments reproducible.
 
 ---
 
-# Authentication Lab
+## Patator
 
-Online authentication testing should use dedicated test accounts and isolated services.
+[`patator.md`](patator.md)
 
-Example:
+Modular brute-force and authentication-testing framework.
+
+Topics include:
 
 ```text
-Tester
-  │
-  ▼
-Test Network
-  │
-  ├── SSH
-  ├── FTP
-  ├── HTTP Authentication
-  └── Other Test Services
+Module architecture
+Authentication testing
+Parameter handling
+Laboratory workflows
+Request analysis
+Result interpretation
 ```
-
-Do not use production accounts or public services for password-guessing experiments.
-
-The lab should also allow defensive controls to be tested:
-
-* Rate limiting
-* Account lockout
-* Authentication logging
-* MFA
-* Failed-login monitoring
 
 ---
 
-# Network Isolation
+## Crowbar
 
-Where possible, keep vulnerable laboratory services separated from the public Internet.
+[`crowbar.md`](crowbar.md)
 
-A basic arrangement is:
+Credential-testing tool focused on supported remote authentication services.
+
+Topics include:
 
 ```text
-Host
- │
- └── Virtual Network
-       │
-       ├── Attacker VM
-       │
-       └── Target VM
+RDP testing
+SSH-key testing
+OpenVPN testing
+Credential auditing
+Laboratory environments
 ```
-
-The attacker and target systems can communicate through the isolated virtual network without exposing the test services publicly.
 
 ---
 
-# Snapshots
+# Windows & Active Directory Security
 
-Virtual-machine snapshots are useful when experimenting with intentionally vulnerable configurations.
+## CrackMapExec
 
-Before a major experiment:
+[`crackmapexec.md`](crackmapexec.md)
+
+Windows and Active Directory security-assessment framework.
+
+Topics include:
 
 ```text
-Clean Lab
+SMB enumeration
+Windows host identification
+SMB signing
+Share auditing
+WinRM
+LDAP
+MSSQL
+RDP
+Credential validation
+Privilege review
+Active Directory assessment
+Windows logging
+Detection engineering
+```
+
+> CrackMapExec is primarily a Windows/Active Directory security-assessment tool rather than a standalone password-cracking utility.
+
+---
+
+# Recommended Learning Path
+
+Start with offline password research:
+
+```text
+Hashcat
    ↓
-Create Snapshot
+John the Ripper
    ↓
-Run Experiment
+Hashcat Utils
    ↓
-Record Results
+Ophcrack
    ↓
-Restore Snapshot
+RainbowCrack
 ```
 
-This allows the same experiment to be repeated from a known state.
+Then move into authentication testing:
+
+```text
+Hydra
+   ↓
+Medusa
+   ↓
+Ncrack
+   ↓
+Patator
+   ↓
+Crowbar
+```
+
+Then Windows and Active Directory:
+
+```text
+CrackMapExec
+   ↓
+SMB Security
+   ↓
+WinRM
+   ↓
+LDAP
+   ↓
+Active Directory Assessment
+```
 
 ---
 
-# Hardware Documentation
+# Laboratory Structure
 
-Performance results should include the hardware used.
-
-Record at least:
+A safe research environment can contain:
 
 ```text
-CPU:
-GPU:
-RAM:
-Operating System:
-Driver Version:
-John Version:
-Hashcat Version:
+Attack-Testing-VM
+        │
+        ├── Kali / Parrot OS
+        │
+        └── Testing Tools
+                 │
+                 ▼
+        ┌──────────────────┐
+        │ Isolated Network │
+        └──────────────────┘
+                 │
+        ┌────────┼────────┐
+        ▼        ▼        ▼
+      Linux    Windows   AD Lab
+       VM        VM        DC
 ```
 
-Hardware can significantly affect offline password-recovery performance, especially during GPU-based testing.
+Keep vulnerable systems and test accounts inside an isolated environment.
 
 ---
 
-# Research Directory
+# Research Workflow
 
-A consistent directory layout helps keep experiments reproducible.
-
-Example:
+Use the following methodology:
 
 ```text
-research/
-├── hashes/
-├── encrypted-files/
-├── wordlists/
-├── results/
-├── benchmarks/
-├── scripts/
-└── notes/
+1. Define Scope
+       ↓
+2. Obtain Authorization
+       ↓
+3. Build Laboratory
+       ↓
+4. Create Test Accounts
+       ↓
+5. Identify Target Service
+       ↓
+6. Select Appropriate Tool
+       ↓
+7. Perform Controlled Test
+       ↓
+8. Monitor Logs
+       ↓
+9. Record Results
+       ↓
+10. Identify Security Weaknesses
+       ↓
+11. Apply Remediation
+       ↓
+12. Retest
+       ↓
+13. Document Findings
 ```
-
-Keep generated files and experimental output separate from the documentation.
 
 ---
 
-# Experiment Documentation
+# What to Record
 
-Every experiment should record:
+For repeatable security research, record:
 
 ```text
-Target
-Protection / Algorithm
-Parameters
-Password Type
-Candidate Source
-Attack Technique
 Tool
-Tool Version
-Hardware
+Version
+Operating System
+Target
+Protocol
+Test Account
+Candidate Dataset
+Configuration
 Start Time
 End Time
 Result
-Observations
+Server Logs
+Detection Result
+Security Finding
+Remediation
 ```
 
-Example:
-
-```text
-Target:       Synthetic test hash
-Algorithm:    [document]
-Tool:         [document]
-Technique:    Dictionary + Rules
-Candidates:   [document]
-Hardware:     [document]
-Result:       Recovered / Not recovered
-Elapsed Time: [document]
-```
-
-This makes results easier to reproduce and compare.
+Never store real production credentials in research notes.
 
 ---
 
-# Safety
+# Defensive Research
 
-The laboratory should remain within an authorized scope.
+These tools can also be used to evaluate defensive controls.
 
-Use:
+Research areas include:
 
-* Self-generated credentials
-* Self-created encrypted files
+```text
+Password Policy
+Password Reuse
+Account Lockout
+Rate Limiting
+MFA
+SMB Signing
+LDAP Security
+WinRM Restrictions
+RDP Security
+Authentication Logging
+SIEM Detection
+Alerting
+Least Privilege
+```
+
+A useful experiment is:
+
+```text
+Authentication Attempt
+        ↓
+Windows / Linux Logs
+        ↓
+Log Collection
+        ↓
+Detection Rule
+        ↓
+Security Alert
+        ↓
+Investigation
+        ↓
+Remediation
+```
+
+---
+
+# Safety & Authorization
+
+This repository is intended for:
+
+* Authorized penetration testing
+* Security research
 * CTF environments
-* Intentionally vulnerable systems
-* Explicitly authorized penetration-testing targets
+* Personal laboratories
+* Defensive security testing
+* Cybersecurity education
 
-Do not test password-guessing techniques against accounts, services, files, or credentials that you do not have permission to assess.
+Do **not** use these techniques against:
 
+* Accounts you do not own
+* Public login portals without permission
+* Third-party infrastructure
+* Production systems outside the authorized scope
+* Stolen credentials
+* Real-world targets without written authorization
+
+Always define the testing scope before beginning an assessment.
+
+---
+
+# Directory Structure
+
+```text
+Attack Guide/
+│
+├── README.md
+│
+├── Hashcat.md
+├── john-the-ripper.md
+├── hashcat-utils.md
+├── ophcrack.md
+├── rainbowcrack.md
+│
+├── hydra.md
+├── medusa.md
+├── ncrack.md
+├── patator.md
+├── crowbar.md
+│
+└── crackmapexec.md
+```
+
+---
+
+# Disclaimer
+
+These guides are provided for educational and authorized security-testing purposes.
+
+The tools documented here can perform authentication testing and security assessment activities that may cause account lockouts, service disruption, or security alerts when misused.
+
+Always obtain explicit authorization before testing systems that you do not own.
+
+**Learn responsibly. Test legally. Document everything.**
